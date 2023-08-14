@@ -8,6 +8,7 @@ import helmet from "helmet";
 import morgan from "morgan";
 import path from "path";
 import { fileURLToPath } from "url";
+import { register } from "./controllers/auth.js"
  
 
 /* CONFIGURATION */
@@ -37,6 +38,9 @@ const storage = multer.diskStorage({
 })
 
 const upload = multer({ storage })
+
+/* Routes with Filex */
+app.post("/auth/register", upload.single("picture"), register)
 
 /* mONGOOSE sETUP */
 
